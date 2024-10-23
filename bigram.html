@@ -193,11 +193,11 @@ var puzzles = [
     {'layer':1,'answer':['BIGRAM'], 'puzzle':'TY PE IN BI GR AM'},
     {'layer':1,'answer':['JACKLANCE'], 'puzzle':'HO MA GE TO WH OM'},
     {'layer':1,'answer':['DERIVATIVE'], 'puzzle':'dy dx'},
-    {'layer':1,'answer':['NOCAP'], 'puzzle':'FR FR (2 3)'},
+    {'layer':1,'answer':['NOCAP', 'ONGOD'], 'puzzle':'FR FR (2 3)'},
     {'layer':1,'answer':['MAPS'], 'puzzle':'W8 ✋🎜'},
-    {'layer':1,'answer':['ECCO'], 'puzzle':"DG 's 2k"},
+    {'layer':1,'answer':['ECCO', 'ECCOK'], 'puzzle':"DG 's 2k"},
     {'layer':1,'answer':['JRPG'], 'puzzle':'FF P3 P4 P5 EG'},
-    {'layer':1,'answer':['FUJITASAKI'], 'puzzle':'MI KU VA'},
+    {'layer':1,'answer':['FUJITASAKI', 'SAKIFUJITA'], 'puzzle':'MI KU VA'},
     {'layer':1,'answer':['ELITECANADIAN'], 'puzzle':'?? of r/ PG (5 8)'},
     {'layer':1,'answer':['GAMMA'], 'puzzle':'fx n!'},
     {'layer':2,'answer':['DAVID'], 'puzzle':'DA 6D'},
@@ -210,7 +210,7 @@ var puzzles = [
     {'layer':2,'answer':['BLOWBACK'], 'puzzle':'WO LB'},
     {'layer':3,'answer':['DODO'], 'puzzle':'DO 2x'},
     {'layer':3,'answer':['SABRINACARPENTER'], 'puzzle':'PL EA SE 3x SI NG ER'},
-    {'layer':3,'answer':['DOUBLE JEOPARDY'], 'puzzle':'JE OP AR DY 2x'},
+    {'layer':3,'answer':['DOUBLEJEOPARDY'], 'puzzle':'JE OP AR DY 2x'},
     {'layer':3,'answer':['YOUREOUT'], 'puzzle':'ST RI KE 3x'},
     {'layer':3,'answer':['OCTOGRAM'], 'puzzle':'GR AM 8x'},
     {'layer':3,'answer':['NONAGONAL'], 'puzzle':'AG ON AL 9x'},
@@ -314,7 +314,8 @@ var puzzles = [
             console.log('correct')
             var puzzlebox = $('.puzzlebox')[level];
             $('#textbox')[0].value = '';
-            puzzlebox.style.backgroundColor = 'green';
+            puzzlebox.style.backgroundColor = 'black';
+            puzzlebox.style.color = 'white';
             next();
         }
     }
