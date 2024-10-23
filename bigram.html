@@ -37,8 +37,8 @@
     </div>
     
     <div id="levels">
-    
     </div>
+
 </body>
 <style>
 
@@ -85,7 +85,6 @@ button:hover {
     font-weight: bold;
     padding-inline: 25px;
     height: 50px;
-    width: 1000px;
     font-family: 'Share Tech Mono';
 }
 
@@ -150,10 +149,11 @@ html {
 .cont {
     background-color: white;
     padding: 25px;
-    width: fit-content;
+    width: 80%;
     margin: auto;
     margin-top:50px;
     border: 7px solid black;
+
 }
 
 #game {
@@ -173,6 +173,7 @@ html {
     justify-content: left;
     gap: 5px;
     width: 80%;
+    flex-wrap: wrap;
 }
 
 .puzzlebox {
@@ -206,7 +207,7 @@ var puzzles = [
 {'layer':2,'answer':['YURT'], 'puzzle':'Q> ZX CV U> M, ./ V> 22 11'},
 {'layer':3,'answer':['BABY'], 'puzzle':'.. BE BI BO BU ..'},
 {'layer':3,'answer':['MISO'], 'puzzle':'DO RE .. FA .. LA TI'},
-{'layer':3,'answer':['IRIS'], 'puzzle':'IO IP IQ .. .. IT IU IV'},
+{'layer':3,'answer':['IRIS'], 'puzzle':'IQ .. .. IT'},
 {'layer':3,'answer':['ORCA'], 'puzzle':'WA .. .. AZ'},
 {'layer':3,'answer':['SMOL'], 'puzzle':'.. cd .. kg .. 02 01'},
 {'layer':3,'answer':['LOVE'], 'puzzle':'JQ KP .. MN NM || UF WD .. XC YB'},
@@ -271,6 +272,16 @@ var puzzles = [
         pbox.onclick = function() {set_puzzle(x)}
     }
 
+    var solved = localStorage.getItem('solved')
+    if (solved != '') {
+        for (const level of JSON.parse(solved)) {
+            console.log(level);
+            var puzzleboxxx = $('.puzzlebox')[level];
+            puzzleboxxx.style.backgroundColor = 'black';
+            puzzleboxxx.style.color = 'white';
+        }
+    }
+
     function set_puzzle(i) {
         var puzzle = puzzles[i]
         level = i;
@@ -284,11 +295,19 @@ var puzzles = [
         var answer_submitted = $('#textbox')[0].value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
         console.log(answer, answer_submitted);
         if (answer.includes(answer_submitted)) {
-            console.log('correct')
             var puzzlebox = $('.puzzlebox')[level];
             $('#textbox')[0].value = '';
             puzzlebox.style.backgroundColor = 'black';
             puzzlebox.style.color = 'white';
+            //
+
+            if (localStorage.getItem('solved') == '') {
+                localStorage.setItem('solved', JSON.stringify([]))
+            }
+            console.log(s);
+            var s = JSON.parse(localStorage.getItem('solved'))
+            s.push(level)
+            localStorage.setItem('solved', JSON.stringify(s))
             next();
         }
     }
