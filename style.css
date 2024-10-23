@@ -1,0 +1,88 @@
+html {
+    font-family: 'IBM Plex Sans';
+    background-color: rgb(13, 0, 59);
+    color: #ECECEC;
+}
+
+h1, h2, h3, h4 {
+    color:  rgb(13, 0, 59);
+    text-decoration: underline;   
+}
+
+.main {
+    width: max(50%, 450px);
+    margin: auto;
+    margin-top: 50px;
+    background-color: white;
+    color: black;
+    padding: 35px;
+    text-align: justify;
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+li {
+    margin-block: 10px;
+}
+
+.radial {
+    position: fixed;
+    display: flex;
+    font-size: 45px;
+    font-family: 'Inconsolata', monospace;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+
+    width: 1000px;
+    height: 1000px;
+
+    animation: spin;
+    animation-duration: 40000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.radial-a {
+    left: -550px;
+    top: -550px;
+}
+
+.radial-b {
+    right: 50px;
+    top: 250px;
+}
+
+.radial-c {
+    right: -500px;
+    top: -750px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.radial-cont {
+    position: relative; 
+}
+
+.radial-row {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: left;
+}
+
+.excerpt {
+    width: 80%;
+    margin: auto;
+    padding: 50px;
+    background-color:rgb(230, 230, 230)
+}

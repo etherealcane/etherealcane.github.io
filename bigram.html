@@ -1,0 +1,334 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="static/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>BI GR AM</title>
+</head>
+<body>
+    <div class="radial radial-a">
+        <div class="radial-cont">
+        </div>
+    </div>
+
+    <div class="radial radial-b">
+        <div class="radial-cont">
+        </div>
+    </div>
+
+    <div class="radial radial-c">
+        <div class="radial-cont">
+        </div>
+    </div>
+
+    <div class="cont">
+        <div id="game">
+            <h1>BI GR AM</h1>
+            <div id="puzzlebox">PU ZZ LE GO ES HE RE</div>
+            <input type=text id="textbox">
+            <button id="submit" onclick="submit()">SU BM IT</button>
+            <button id="next" onclick="next()">NE XT</button>
+
+        </div>
+    </div>
+    
+    <div id="levels">
+    
+    </div>
+</body>
+<style>
+
+html {
+    font-family: 'IBM Plex Sans';
+}
+
+#textbox {
+    font-family: 'IBM Plex Sans';
+}
+
+h1 {
+    width: fit-content;
+    background-color: black;
+    color: white;
+    font-size: 35px;
+    font-family: 'Share Tech Mono';
+    cursor: pointer;
+    margin: auto;
+    padding-inline: 25px;
+
+}
+
+button {
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    font-family: 'Share Tech Mono';
+    cursor: pointer;
+}
+
+button:hover {
+    filter: invert(1);
+}
+
+#puzzlebox {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    margin-block: 25px;
+    background-color: black;
+    color: yellow;
+    font-size: 25px;
+    font-weight: bold;
+    padding-inline: 25px;
+    height: 50px;
+    width: 1000px;
+    font-family: 'Share Tech Mono';
+}
+
+.radial {
+    color: white;
+    position: fixed;
+    display: flex;
+    font-size: 45px;
+    font-family: 'Inconsolata', monospace;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+
+    width: 1000px;
+    height: 1000px;
+
+    animation: spin;
+    animation-duration: 40000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.radial-a {
+    left: -550px;
+    top: -550px;
+}
+
+.radial-b {
+    right: 50px;
+    top: 250px;
+}
+
+.radial-c {
+    right: -500px;
+    top: -750px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.radial-cont {
+    position: relative; 
+}
+
+.radial-row {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: left;
+}
+
+html {
+    background-color: rgb(13, 0, 59);
+}
+
+.cont {
+    background-color: white;
+    padding: 25px;
+    width: fit-content;
+    margin: auto;
+    margin-top:50px;
+    border: 7px solid black;
+}
+
+#game {
+    text-align: center;
+}
+
+#levels {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.layer {
+    display: flex;
+    margin: auto;
+    margin-block: 10px;
+    text-align: left;
+    justify-content: left;
+    gap: 5px;
+    width: 80%;
+}
+
+.puzzlebox {
+    padding: 10px;
+    background-color: rgb(13, 0, 59);
+    background-color: white;
+    cursor: pointer;
+}
+
+.puzzlebox:hover{
+    background-color: black;
+    color: white;
+}
+
+</style>
+<script>
+var puzzles = [
+    {'layer':1,'answer':['BIGRAM'], 'puzzle':'TY PE IN BI GR AM'},
+    {'layer':1,'answer':['JACKLANCE'], 'puzzle':'HO MA GE TO WH OM'},
+    {'layer':1,'answer':['DERIVATIVE'], 'puzzle':'dy dx'},
+    {'layer':1,'answer':['NOCAP'], 'puzzle':'FR FR (2 3)'},
+    {'layer':1,'answer':['MAPS'], 'puzzle':'W8 ✋🎜'},
+    {'layer':1,'answer':['ECCO'], 'puzzle':"DG 's 2k"},
+    {'layer':1,'answer':['JRPG'], 'puzzle':'FF P3 P4 P5 EG'},
+    {'layer':1,'answer':['FUJITASAKI'], 'puzzle':'MI KU VA'},
+    {'layer':1,'answer':['ELITECANADIAN'], 'puzzle':'?? of r/ PG (5 8)'},
+    {'layer':1,'answer':['GAMMA'], 'puzzle':'fx n!'},
+    {'layer':2,'answer':['DAVID'], 'puzzle':'DA 6D'},
+    {'layer':2,'answer':['LONELY'], 'puzzle':'L1 LY'},
+    {'layer':2,'answer':['LAYOUT'], 'puzzle':'FU SI ON +6'},
+    {'layer':2,'answer':['HOMEGAME'], 'puzzle':'HΩ ME'},
+    {'layer':2,'answer':['MUSHROOM'], 'puzzle':'µ🤫 🇷🇴ॐ'},
+    {'layer':2,'answer':['REVERSEPSYCHOLOGY'], 'puzzle':'YG OL OH CY SP'},
+    {'layer':2,'answer':['MATRYOSHKA'], 'puzzle':'(D O( DO (D OL L) LL )L L)'},
+    {'layer':2,'answer':['BLOWBACK'], 'puzzle':'WO LB'},
+    {'layer':3,'answer':['DODO'], 'puzzle':'DO 2x'},
+    {'layer':3,'answer':['SABRINACARPENTER'], 'puzzle':'PL EA SE 3x SI NG ER'},
+    {'layer':3,'answer':['DOUBLE JEOPARDY'], 'puzzle':'JE OP AR DY 2x'},
+    {'layer':3,'answer':['YOUREOUT'], 'puzzle':'ST RI KE 3x'},
+    {'layer':3,'answer':['OCTOGRAM'], 'puzzle':'GR AM 8x'},
+    {'layer':3,'answer':['NONAGONAL'], 'puzzle':'AG ON AL 9x'},
+    {'layer':3,'answer':['TIGER'], 'puzzle':'01 ox ??'},
+    {'layer':3,'answer':['SIMPLEX'], 'puzzle':'EA SY &x'},
+    {'layer':3,'answer':['GO'], 'puzzle':'?? at se cx'},
+    {'layer':3,'answer':['JAMIE'], 'puzzle':'GO SH -? xx'},
+    {'layer':4,'answer':['ZOOM'], 'puzzle':'Z. .M'},
+    {'layer':4,'answer':['OJIBWE'], 'puzzle':'OJ .. ..'},
+    {'layer':4,'answer':['DUMMKOPF'], 'puzzle':'.. .. .. PF'},
+    {'layer':4,'answer':['ZWITTERION'], 'puzzle':'ZW .. .. .. ..'},
+    {'layer':4,'answer':['TROUBLEMAKER'], 'puzzle':'.. .U .. .. .K ..'},
+    {'layer':4,'answer':['STREPTOBACILLI'], 'puzzle':'S. .. .. .. .. .. .I'},
+    {'layer':4,'answer':['CZECHOSLOVAKIANS'], 'puzzle':'.Z .. .. .. .. .K .. ..'},
+    {'layer':5,'answer':['KEYBOARD'], 'puzzle':'OM WR TU VN IP QZ ET SF'},
+    {'layer':5,'answer':['HOP'], 'puzzle':'04 ?? ?? ?? 23 42'},
+    {'layer':5,'answer':['IAMB'], 'puzzle':'↑↑ 41 .. 23'},
+    {'layer':5,'answer':['YEAH'], 'puzzle':'.. .. .. .. .. .. .. .. .. .. .. .. .| .. .. .| .| .. .. .. ..'},
+    {'layer':5,'answer':['TYRE'], 'puzzle':'🎌🎌 RD EC DV XZ'},
+    {'layer':5,'answer':['YURT'], 'puzzle':'Q> ZX CV U> M, ./ V> 22 11'},
+    {'layer':6,'answer':['CONE'], 'puzzle':'WY SD || .. .. || NM KS'},
+    {'layer':6,'answer':['LUSH'], 'puzzle':'ET AO IN 02 RD 01'},
+    {'layer':6,'answer':['BI'], 'puzzle':'LG .T Q. A+'},
+    {'layer':6,'answer':['SMOL'], 'puzzle':'.. cd .. kg .. 02 01'},
+    {'layer':6,'answer':['BABY'], 'puzzle':'.. BE BI BO BU ..'},
+    {'layer':6,'answer':['NONE'], 'puzzle':'He Ar Kr Xe Ra Og'},
+    {'layer':6,'answer':['MISSINGNO'], 'puzzle':'नहीं ні не EZ NE نه 没有'},
+    {'layer':6,'answer':['NOSHOW'], 'puzzle':'AB CD EF GI JK LM NP QR TU VX YZ'},
+    {'layer':7,'answer':['ABRACADABRA'], 'puzzle':'X4 Y3 X4 MA GI CW OR DS'},
+    {'layer':7,'answer':['BLACKJACK'], 'puzzle':'X2 Y3 Z1 Y3 GA ME'},
+    {'layer':7,'answer':['POMPOMPURIN'], 'puzzle':'X3 X3 Y2 Z3 MA SC OT'},
+    {'layer':7,'answer':['SHIKANOKONOKONOKOKOSHITANTAN'], 'puzzle':'V3 W1 X3 X3 X3 Y1 V3 Z3 Z3 SH OW'},
+    {'layer':7,'answer':['RACECAR'], 'puzzle':'X3 Z1 3X F1 OB JE CT'},
+    {'layer':8,'answer':['CRWTHS'], 'puzzle':'CC CC CC (Y == V)'},
+    {'layer':8,'answer':['EUOUAE'], 'puzzle':'VV VV VV'},
+    {'layer':8,'answer':['OVOVIVIPAROUS'], 'puzzle':'Vv Vv Vv V. .. ..'},
+    {'layer':8,'answer':['CURRICULUMVITAE'], 'puzzle':'cV CC VC VC VC |v VC VV '},
+    {'layer':8,'answer':['FORESEES', 'FOURSEAS'], 'puzzle':'CC CC'}
+]
+
+    const offset = 10;
+    var answer;
+    var level = -1;
+    const nums = 360/8
+    for (var i = 0; i < nums; i++) {
+        $('.radial-cont').append(
+            `<div class="radial-row">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[...........]</div>`
+        )
+    }
+    const $items = $('.radial-cont .radial-row');
+    const radius = 350;
+    
+    $items.each(function(index) {
+        const angle = index * offset;
+        $(this).css('transform', `rotate(${angle}deg)`);
+    });
+
+    // initialize levels
+    const levels = $('#levels');
+    var layer = 1;
+    var row = $('<div></div>').attr('id', `layer_${layer}`)
+    row.attr('class', 'layer')
+    levels.append(row);
+
+    var puzzlebox = $('#puzzlebox');
+
+    for (var i = 0; i < puzzles.length; i++) {
+        var puzzle = puzzles[i]
+        if (puzzle.layer == layer) {
+            var puzzle_element = $(`<div>${i + 1 < 10 ? '0' + (i + 1).toString() : i + 1}</div>`).attr('class', 'puzzlebox')
+            row.append(puzzle_element)
+        }
+        else {
+            layer += 1;
+            var row = $('<div></div>').attr('id', `layer_${layer}`)
+            row.attr('class', 'layer')
+            levels.append(row);
+            var puzzle_element = $(`<div>${i + 1}</div>`).attr('class', 'puzzlebox')
+            row.append(puzzle_element)
+        }
+    }
+
+    for (let x = 0; x < puzzles.length; x++) {
+        let pbox = $('.puzzlebox')[x]
+        pbox.onclick = function() {set_puzzle(x)}
+    }
+
+    function set_puzzle(i) {
+        var puzzle = puzzles[i]
+        level = i;
+        console.log(i, puzzle);
+        answer = puzzle.answer;
+        puzzlebox.text(puzzle.puzzle);
+    }
+
+    function submit() {
+        if (answer == null) {return}
+        var answer_submitted = $('#textbox')[0].value.replace(/[^a-zA-Z]/g, '').toUpperCase();
+        console.log(answer, answer_submitted);
+        if (answer.includes(answer_submitted)) {
+            console.log('correct')
+            var puzzlebox = $('.puzzlebox')[level];
+            $('#textbox')[0].value = '';
+            puzzlebox.style.backgroundColor = 'green';
+            next();
+        }
+    }
+
+    function next() {
+        set_puzzle(level + 1);
+    }
+
+    set_puzzle(0);
+
+    document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        submit()
+    }
+});
+</script>
+</html>
