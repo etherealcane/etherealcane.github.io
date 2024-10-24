@@ -272,9 +272,9 @@ var puzzles = [
         pbox.onclick = function() {set_puzzle(x)}
     }
 
-    var solved = localStorage.getItem('solved')
-    if (solved != '') {
-        for (const level of JSON.parse(solved)) {
+    var solved = JSON.parse(localStorage.getItem('solved'))
+    if (Array.isArray(solved) && solved.length > 0) {
+        for (const level of solved) {
             console.log(level);
             var puzzleboxxx = $('.puzzlebox')[level];
             puzzleboxxx.style.backgroundColor = 'black';
@@ -301,11 +301,11 @@ var puzzles = [
             puzzlebox.style.color = 'white';
             //
 
-            if (localStorage.getItem('solved') == '') {
+            if (!localStorage.getItem('solved')) {
                 localStorage.setItem('solved', JSON.stringify([]))
             }
-            console.log(s);
             var s = JSON.parse(localStorage.getItem('solved'))
+            console.log(s);
             s.push(level)
             localStorage.setItem('solved', JSON.stringify(s))
             next();
