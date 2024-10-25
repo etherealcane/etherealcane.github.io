@@ -18,7 +18,6 @@
             <input type=text id="textbox">
             <button id="submit" onclick="submit()">SU BM IT</button>
             <button id="next" onclick="next()">NE XT</button>
-
         </div>
     </div>
     
@@ -180,9 +179,10 @@ var puzzles = [
 {'layer':1,'answer':['BIGRAM'], 'puzzle':'TY PE IN BI GR AM'},
 {'layer':1,'answer':['JACKLANCE'], 'puzzle':'HO MA GE TO WH OM'},
 {'layer':1,'answer':['OFF'], 'puzzle':'UN ON'},
-{'layer':1,'answer':['NOCAP','ONGOD'], 'puzzle':'FR FR'},
+{'layer':1,'answer':['TAU'], 'puzzle':'PI x2'},
+{'layer':1,'answer':['REDBALLOONS','LUFTBALLOONS'], 'puzzle':'99 OF EM GO BY'},
 {'layer':1,'answer':['GOAT'], 'puzzle':'IF OX IS 02 ?? IS 08'},
-{'layer':1,'answer':['-40'], 'puzzle':'xC == xF'},
+{'layer':1,'answer':['-40'], 'puzzle':'xC EQ xF'},
 {'layer':1,'answer':['BLACKICE'], 'puzzle':'AC DC LP XV'},
 {'layer':1,'answer':['GOLDFINGER'], 'puzzle':'DR NO +2'},
 {'layer':1,'answer':['127'], 'puzzle':'MY IP IS AT ?? 00 00 01'},
@@ -209,19 +209,36 @@ var puzzles = [
 {'layer':4,'answer':['SHIKANOKONOKONOKOKOSHITANTAN'], 'puzzle':'V3 W2 X4 X4 X4 Y2 V3 Z3 Z3 SH OW'},
 {'layer':4,'answer':['GEROGERIGEGEGE'], 'puzzle':'X2 Y2 X2 Z2 X2 X2 X2 BA ND'},
 {'layer':4,'answer':['RACECAR'], 'puzzle':'X3 Z1 3X F1 OB JE CT'},
-{'layer':4,'answer':['NATHAN'], 'puzzle':'X2 Y2 2X ME'},
+{'layer':4,'answer':['BABYSHARK'], 'puzzle':'## Y5 Z2 x6 x3 ## Y5 || ## == A4 B5 C5 D7 E7 || LY RI CS'},
 {'layer':5,'answer':['TENS'], 'puzzle':'15 16 4. 2. 3. 1. 21 22'},
 {'layer':5,'answer':['HOP'], 'puzzle':'04 .. .. .. 23 42'},
 {'layer':5,'answer':['SKEW'], 'puzzle':'02 03 #3 07 #2 13 17 #1 #4 29 31 37'},
-{'layer':5,'answer':['L8'], 'puzzle':'16 06 68 88 ?? 98'},
+{'layer':5,'answer':['L8'], 'puzzle':'16 06 68 88 .. 98'},
 {'layer':5,'answer':['CHERYL'], 'puzzle':'15 05 16 05 19 05 17 06 18 06 14 07 16 07 14 08 15 08 17 08 C?'},
 {'layer':6,'answer':['EARL'], 'puzzle':'SY TO RL IN EZ'},
 {'layer':6,'answer':['FORFEND'], 'puzzle':'IT TO ND IN FF'},
 {'layer':6,'answer':['SILVERBACK'], 'puzzle':'25 TO AG IN QB'},
 {'layer':6,'answer':['CENTER'], 'puzzle':'AM PM HR EG TO .. IN CM'},
-{'layer':6,'answer':['OZ'], 'puzzle':'AN TO ?? IN αβ'}
+{'layer':6,'answer':['OZ'], 'puzzle':'AN TO ?? IN αβ'},
+{'layer':7,'answer':['BEE'], 'puzzle':'EE EB BE BB ..'},
+{'layer':7,'answer':['BED'], 'puzzle':'AA AB AC AD AE BA BB BC || 48'},
+{'layer':7,'answer':['CRAM'], 'puzzle':'ZZ EQ 26 ** 02 -1 -> 06 ** 06 EQ ?? ??'},
+{'layer':8,'answer':['HYDROGENPEROXIDE'], 'puzzle':'H2 O2'},
+{'layer':8,'answer':['CARBONMONOXIDE'], 'puzzle':'CO'},
+{'layer':8,'answer':['SULFURICACID'], 'puzzle':'H2 S1 O4'},
+{'layer':8,'answer':['ACID'], 'puzzle':'pH <7 eg'},
+{'layer':8,'answer':['APATITE'], 'puzzle':'Ca F2 ?? .. Si O2'},
+{'layer':8,'answer':['TUNGSTEN', 'W'], 'puzzle':'Li 1x 2y ?? 6x 6y'},
+{'layer':8,'answer':['MORE'], 'puzzle':'Tc <v'},
+{'layer':8,'answer':['SUBCONSCIOUS'], 'puzzle':'B1 C2 I1 N1 O2 S3 U2'},
+{'layer':9,'answer':['KATE'], 'puzzle':'K8'},
+{'layer':9,'answer':['TUTU'], 'puzzle':'22'},
+{'layer':9,'answer':['WANDA'], 'puzzle':'1大'},
+{'layer':9,'answer':['FORTIFY'], 'puzzle':'40 FY'},
+{'layer':9,'answer':['STARTUP'], 'puzzle':'*T UP'},
+{'layer':9,'answer':['ATOMISE', 'ATOMIZE'], 'puzzle':'@O MY MY MY'},
+{'layer':9,'answer':['JICAMA'], 'puzzle':'G,'}
 ]
-
     const offset = 10;
     var answer;
     var level = -1;
@@ -289,7 +306,7 @@ var puzzles = [
 
     function submit() {
         if (answer == null) {return}
-        var answer_submitted = $('#textbox')[0].value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+        var answer_submitted = $('#textbox')[0].value.replace(/\s/g, '').toUpperCase();
         console.log(answer, answer_submitted);
         if (answer.includes(answer_submitted)) {
             var puzzlebox = $('.puzzlebox')[level];
