@@ -1,0 +1,115 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Neuton:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>6040</title>
+</head>
+<body>
+    <div style="width:105%; position: absolute; left:-500px;" id="5040">
+        <div id="5045">
+            <h1>it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed</h1>
+            <h1 style="margin-left: 20px">it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed</h1>
+            <h1>it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed</h1>
+        </div>
+        <h1 id="5555">...</h1>
+
+    </div>
+
+    <div class="line">it's time to sleep</div>
+
+    <div class="line">i started staring at the cockroaches. it was late at night around 1am outside and that's when they feel safe enough to come out. there were a few near the playground, on the paths cutting through the rubber, and i bent down and i took a look at it. bigger than the ones in our house, it was brown, and it was fast, it moved around ten times its body length in a single second. i thought it was quite beautiful, and for the first time in a long while i wasn't struck with the urge to kill it. i looked at it the same way people look at stray cats or zoo creatures. i wanted to protect it somehow.</div>
+
+    <div class="line">nothing i ever make will be important to anyone</div>
+
+    <div class="line">it'd be nice</div>
+
+    <div class="line">bad feeling</div>
+
+</body>
+
+<style>
+
+html {
+    overflow-x: hidden;
+}
+
+h1 {
+    white-space: nowrap;
+    font-weight:lighter;
+}
+
+.line {
+    position: absolute;
+    color: red;
+    max-width: 500px;
+    font-size: 25px;
+    background-color: black;
+    text-align: justify;
+    padding: 25px;
+}
+body {
+    background-image: url('static/static.gif');
+    background-repeat: repeat;
+    color: white;
+    font-family:"Neuton";
+}
+
+h1 {
+    margin-block: -12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+</style>
+<script>
+    var lines = document.querySelectorAll('.line')
+    var offset = 3500
+    for (var i = 0; i < lines.length; i++) {
+        lines[i].style.top = i * offset + 250;
+        lines[i].style.left = Math.random() * 1000
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+    const contentDiv = document.getElementById('5045');
+    const loadMoreDiv = document.getElementById('5555');
+    let count = 4; 
+
+    function addMoreHeadings() {
+        for (let i = 0; i < 50; i++) {
+            const newHeading = document.createElement('h1');
+            newHeading.style.marginLeft = Math.random() * 250
+            newHeading.textContent = `it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed it's time to go to bed`;
+            contentDiv.appendChild(newHeading);
+            count++;
+        }
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+            addMoreHeadings();
+        }
+    });
+
+    function fillPage() {
+        var body = document.body,
+            html = document.documentElement;
+
+        var pageHeight = Math.max( body.scrollHeight, body.offsetHeight, 
+                            html.clientHeight, html.scrollHeight, html.offsetHeight );
+
+        console.log('attempting to fill page')
+        console.log(pageHeight)
+        let contentHeight = contentDiv.scrollHeight
+        while (contentHeight < pageHeight) {
+            addMoreHeadings();
+            contentHeight = contentDiv.scrollHeight; 
+        }
+    }
+
+    fillPage()
+    observer.observe(loadMoreDiv);
+});
+
+</script>
+</html>

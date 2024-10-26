@@ -14,6 +14,7 @@
     <div class="cont">
         <div id="game">
             <h1>2g</h1>
+            <h1 id="levelind">level: </h1>
             <div id="puzzlebox">PU ZZ LE GO ES HE RE</div>
             <input type=text id="textbox">
             <button id="submit" onclick="submit()">SU BM IT</button>
@@ -26,6 +27,16 @@
 
 </body>
 <style>
+
+#levelind {
+    position: absolute;
+    left: 5;
+    top: 5;
+    font-size: 25px;
+    color: rgb(13, 0, 59);
+    text-align: left;
+    background-color: white;
+}
 
 html {
     font-family: 'IBM Plex Sans';
@@ -143,6 +154,7 @@ html {
 
 #game {
     text-align: center;
+    position: relative;
 }
 
 #levels {
@@ -152,7 +164,8 @@ html {
     width: fit-content;
     margin:auto;
     margin-top: 45px;
-
+    background-color: white;
+    padding-top: 20px;
 }
 
 .layer {
@@ -166,15 +179,23 @@ html {
     flex-wrap: wrap;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .puzzlebox {
     padding: 10px;
-    background-color: rgb(13, 0, 59);
-    background-color: white;
+    color: white;
+    background-color: rgb(13, 0, 59);   
     cursor: pointer;
 }
 
+.solved {
+    background-color: rgb(73, 129, 73);
+}
+
 .puzzlebox:hover{
-    background-color: black;
+    background-color: red;
     color: white;
 }
 
@@ -296,17 +317,18 @@ var puzzles = [
         for (const level of solved) {
             console.log(level);
             var puzzleboxxx = $('.puzzlebox')[level];
-            puzzleboxxx.style.backgroundColor = 'black';
-            puzzleboxxx.style.color = 'white';
+            puzzleboxxx.classList.add('solved');
         }
     }
 
     function set_puzzle(i) {
+        var levelind = $('#levelind')
         var puzzle = puzzles[i]
         level = i;
         console.log(i, puzzle);
         answer = puzzle.answer;
         puzzlebox.text(puzzle.puzzle);
+        levelind.text(`LV ${i + 1 < 10 ? '0' + (i + 1).toString() : i + 1}`)
     }
 
     function submit() {
