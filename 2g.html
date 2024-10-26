@@ -17,8 +17,8 @@
             <h1 id="levelind">level: </h1>
             <div id="puzzlebox">PU ZZ LE GO ES HE RE</div>
             <input type=text id="textbox">
-            <button id="submit" onclick="submit()">SU BM IT</button>
-            <button id="next" onclick="next()">NE XT</button>
+            <button id="submit" onclick="submit()">GO</button>
+            <button id="next" onclick="next()">-></button>
         </div>
     </div>
     
@@ -139,7 +139,8 @@ button:hover {
 }
 
 html {
-    background-color: rgb(13, 0, 59);
+    background-image:url('static/200w.gif');
+    background-repeat:repeat;
 }
 
 .cont {
@@ -148,8 +149,6 @@ html {
     width: 80%;
     margin: auto;
     margin-top:50px;
-    border: 7px solid black;
-
 }
 
 #game {
@@ -338,8 +337,7 @@ var puzzles = [
         if (answer.includes(answer_submitted)) {
             var puzzlebox = $('.puzzlebox')[level];
             $('#textbox')[0].value = '';
-            puzzlebox.style.backgroundColor = 'black';
-            puzzlebox.style.color = 'white';
+            puzzlebox.classList.add('solved');
             //
 
             if (!localStorage.getItem('solved')) {
